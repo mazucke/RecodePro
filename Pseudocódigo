@@ -1,0 +1,108 @@
+Algoritmo "Meu Destino"
+Var
+   nomeClientes: vetor[1..100] de caractere
+   cpfClientes: vetor[1..100] de caractere
+   telefoneClientes: vetor[1..100] de caractere
+
+   nomeDestinos: vetor[1..100] de caractere
+   paisDestinos: vetor[1..100] de caractere
+   duracaoDestinos: vetor[1..100] de caractere
+   custoDestinos: vetor[1..100] de caractere
+
+   numClientes, numDestinos, opcao: inteiro
+
+Inicio
+   numClientes <- 0
+   numDestinos <- 0
+
+   Escreva("------ MENU PRINCIPAL ------")
+
+   Repita
+      Escreva("1. Cadastro de Cliente")
+      Escreva("2. Cadastro de Destino")
+      Escreva("3. Consultar Cliente")
+      Escreva("4. Consultar Destino")
+      Escreva("5. Sair")
+      Escreva("-----------------------------")
+      Escreva("Escolha uma opção:")
+
+      Leia(opcao)
+
+      Se(opcao = 1) Entao
+         Se(numClientes < 100) Entao
+            numClientes <- numClientes + 1
+            Escreva("Digite o nome do cliente:")
+            Leia(nomeClientes[numClientes])
+            Escreva("Digite o CPF do cliente:")
+            Leia(cpfClientes[numClientes])
+            Escreva("Digite o telefone do cliente:")
+            Leia(telefoneClientes[numClientes])
+            Escreva("Cliente cadastrado com sucesso!")
+         Senao
+            Escreva("Limite de clientes cadastrados atingido!")
+         FimSe
+      Senao Se(opcao = 2) Entao
+         Se(numDestinos < 100) Entao
+            numDestinos <- numDestinos + 1
+            Escreva("Digite o nome do destino:")
+            Leia(nomeDestinos[numDestinos])
+            Escreva("Digite o país do destino:")
+            Leia(paisDestinos[numDestinos])
+            Escreva("Digite a duração da viagem:")
+            Leia(duracaoDestinos[numDestinos])
+            Escreva("Digite o custo da viagem:")
+            Leia(custoDestinos[numDestinos])
+            Escreva("Destino cadastrado com sucesso!")
+         Senao
+            Escreva("Limite de destinos cadastrados atingido!")
+         FimSe
+      Senao Se(opcao = 3) Entao
+         Se(numClientes > 0) Entao
+            Escreva("Digite o CPF do cliente a ser consultado:")
+            Leia(cpf_consulta)
+            achou <- Falso
+            Para i <- 1 Ate numClientes
+               Se(cpfClientes[i] = cpf_consulta) Entao
+                  Escreva("Cliente encontrado:")
+                  Escreva("Nome:", nomeClientes[i])
+                  Escreva("CPF:", cpfClientes[i])
+                  Escreva("Telefone:", telefoneClientes[i])
+                  achou <- Verdadeiro
+                  Pare
+               FimSe
+            FimPara
+            Se(nao achou) Entao
+               Escreva("Cliente não encontrado!")
+            FimSe
+         Senao
+            Escreva("Nenhum cliente cadastrado!")
+         FimSe
+      Senao Se(opcao = 4) Entao
+         Se(numDestinos > 0) Entao
+            Escreva("Digite o nome do destino a ser consultado:")
+            Leia(nome_consulta)
+            achou <- Falso
+            Para i <- 1 Ate numDestinos
+               Se(nomeDestinos[i] = nome_consulta) Entao
+                  Escreva("Destino encontrado:")
+                  Escreva("Nome:", nomeDestinos[i])
+                  Escreva("País:", paisDestinos[i])
+                  Escreva("Duração:", duracaoDestinos[i])
+                  Escreva("Custo:", custoDestinos[i])
+                  achou <- Verdadeiro
+                  Pare
+               FimSe
+            FimPara
+            Se(nao achou) Entao
+               Escreva("Destino não encontrado!")
+            FimSe
+         Senao
+            Escreva("Nenhum destino cadastrado!")
+         FimSe
+      Senao Se(opcao = 5) Entao
+         Escreva("Saindo do programa...")
+      Senao
+         Escreva("Opção inválida!")
+      FimSe
+   Ate(opcao <> 5)
+FimAlgoritmo
